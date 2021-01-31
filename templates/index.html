@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://127.0.0.1:5000/">ZAREJESTRUJ SERWER</a>
+
+    <form action="{{url_for('wlacznik')}}" method="post">
+        <label for="wlacz">Przesyl danych</label>                   
+        <select name="wlacz" id="wlacz">
+            <option value="True">ON</option>
+            <option value="False">OFF</option>
+        </select>
+        <button type="submit">Zatwierdz</button>
+    </form>
+
+    <form action="{{url_for('serwer')}}" method="post">
+        <label for="serwer">Wybierz serwer:</label>                   
+        <select name="serwer" id="serwer">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <button type="submit">Zatwierdz</button>
+    </form>
+
+    <form action="{{url_for('status')}}">
+        <label for="status">Sprawdz czy serwer dziala</label>
+        <button type="submit">Zatwierdz</button>
+    </form>
+    
+    {%if value2 == "True" and value3 == "5050"%}
+        <p style="color: green">Serwer 1 przesyla dane</p>
+    {%else%}
+        <p style="color: red">Serwer 1 nie przesyla danych</p>
+    {%endif%}
+
+    {%if value2 == "True" and value3 == "5051"%}
+        <p style="color: green">Serwer 2 przesyla dane</p>
+    {%else%}
+        <p style="color: red">Serwer 2 nie przesyla danych</p>
+    {%endif%}
+
+    {%if value2 == "True" and value3 == "5052"%}
+        <p style="color: green">Serwer 3 przesyla dane</p>
+    {%else%}
+        <p style="color: red">Serwer 3 nie przesyla danych</p>
+    {%endif%}
+    <form action="{{url_for('wybor')}}" method="post">
+        <label for="metoda">Wybierz metode:</label>                   
+        <select name="metoda" id="metoda">
+            <option value="MQTT">MQTT</option>
+            <option value="HTTP">HTTP</option>
+        </select>
+        <button type="submit">Zatwierdz</button>
+    </form>
+
+    <form action="{{url_for('zakres')}}" method="post">
+        <label for="czestotliwosc">Dostosuj czestotliwosc:</label>
+        <input name="czestotliwosc" type="range" min="1" max="10">
+        <button type="submit">Zatwierdz</button>
+    </form>
+
+    <form action="{{url_for('aktuator')}}" method="post">
+        <label for="aktuator">Aktuator</label>                   
+        <select name="aktuator" id="aktuator">
+            <option value="True">ON</option>
+            <option value="False">OFF</option>
+        </select>
+        <button type="submit">Zatwierdz</button>
+    </form>
+
+    <form action="{{url_for('wyswietlanie')}}" method="post">
+        <label for="wyswietlanie">Podaj ile wartosci chcesz wyswietlic</label>                   
+        <input type="number" name="wyswietlanie">
+        <button type="submit">Zatwierdz</button>
+    </form>
+   
+
+    
+
+
+    {%if value == "1"%}
+        <p style="color: green;">Obslugujesz serwer 1</p>
+    {%else%}
+        <p style="color: red;">Serwer 1</p>
+    {%endif%}
+    {%if value == "2"%}
+        <p style="color: green;">Obslugujesz serwer 2</p>
+    {%else%}
+        <p style="color: red;">Serwer 2</p>
+    {%endif%}
+    
+    {%if value == "3"%}
+        <p style="color: green;">Obslugujesz serwer 3</p>
+    {%else%}
+        <p style="color: red;">Serwer 3</p>
+    {%endif%}
+
+
+</body>
+</html>
